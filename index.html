@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>resume.zanecotten.dev — Coming Soon</title>
+  <meta name="description" content="Resume & katas site for Zane Cotten. Launching soon." />
+
+  <meta property="og:title" content="resume.zanecotten.dev — Coming Soon" />
+  <meta property="og:description" content="Resume & katas site for Zane Cotten. Launching soon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://resume.zanecotten.dev/" />
+
+  <style>
+    /* ==== DARK THEMED ==== */
+    :root{
+      --bg: #0a0a0f;
+      --fg: #e8e9f0;
+      --muted: #a3a3b2;
+      --card: #101018;
+      --accent: #8b5cf6;   /* violet */
+      --accent-2: #22d3ee; /* cyan   */
+      --shadow: 0 12px 34px rgba(0,0,0,.45);
+    }
+    *{ box-sizing: border-box; }
+    html,body{
+      height:100%; margin:0;
+      background:
+        radial-gradient(1200px 1200px at 10% 10%, rgba(139,92,246,.12), transparent 40%),
+        radial-gradient(1000px 1000px at 90% 90%, rgba(34,211,238,.10), transparent 40%),
+        var(--bg);
+      color: var(--fg);
+      font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:48px 20px;
+    }
+    .card{
+      position:relative;
+      width:min(740px,92vw);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)) , var(--card);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius:22px;
+      padding:52px 30px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    /* glowing animated ring */
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:24px;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+      filter: blur(26px) saturate(120%);
+      opacity:.22;
+      z-index:-1;
+      animation: spin 16s linear infinite;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg);} }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(38px, 6.2vw, 60px);
+      line-height:1.04;
+      letter-spacing:-.6px;
+      font-weight: 900;
+    }
+    .tagline{
+      margin:0 0 28px;
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--muted);
+    }
+
+    .cta-row{
+      display:flex; flex-wrap:wrap; gap:12px; margin-top:8px;
+    }
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      border-radius:12px; padding:12px 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#0b0b0f; font-weight:800; text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      box-shadow: 0 10px 22px rgba(139,92,246,.28);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 26px rgba(139,92,246,.34); }
+    .btn:active{ transform: translateY(0); opacity:.92; }
+
+    .link{
+      color: var(--fg); text-decoration:none;
+      border-bottom:2px solid rgba(234,234,242,.22); padding-bottom:2px;
+    }
+    .meta{ margin-top:22px; font-size:14px; color: var(--muted); }
+    .small{ margin-top:12px; font-size:12px; opacity:.85; }
+    footer{ margin-top:28px; font-size:14px; color: var(--muted); }
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: rgba(255,255,255,.06);
+      padding: 2px 6px; border-radius:6px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Coming soon">
+      <h1>Coming Soon</h1>
+      <p class="tagline">The resume & katas site for <strong>Zane Cotten</strong> is almost ready.</p>
+
+      <div class="cta-row">
+        <a class="btn" href="mailto:jobs@zanecotten.dev" aria-label="Email Zane">Contact</a>
+        <a class="btn" href="https://github.com/zanecotten" target="_blank" rel="noopener" aria-label="Open GitHub profile">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/zanecotten" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">LinkedIn</a>
+      </div>
+
+      <p class="meta">
+        Code soon at <span class="mono">github.com/zanecotten/resume-site</span><br />
+        Live URL: <strong>https://resume.zanecotten.dev</strong>
+      </p>
+
+      <footer>
+        © <span id="year"></span> Zane Cotten • Built with HTML/CSS. Deployed to GitHub Pages.
+        <div class="small">HTTPS enforced • Fast, accessible, and mobile-friendly.</div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Set current year and redirect to canonical host if needed
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (location.hostname.endsWith('github.io')) {
+      location.replace('https://resume.zanecotten.dev' + location.pathname + location.search + location.hash);
+    }
+  </script>
+</body>
+</html>
